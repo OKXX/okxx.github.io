@@ -95,6 +95,17 @@ body::before {
   pointer-events: none;
 }
 
+/* 全屏点击粒子特效画布 */
+#click-fx-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99998;
+  pointer-events: none;
+}
+
 /* 赛博光标 */
 #cursor-dot {
   position: fixed;

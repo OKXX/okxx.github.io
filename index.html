@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>OKXX // QUANTUM CYBERSPACE - GitHub Personal Matrix</title>
+  <title>OKXX</title>
   <meta name="description" content="OKXX's futuristic cyber static portal on GitHub Pages featuring high-performance Canvas dynamic animations, particle physics, holographic HUD, and interactive terminal.">
   <meta name="keywords" content="OKXX, GitHub Pages, Canvas, WebGL, Cyberpunk, Creative Developer, Sci-Fi, Holographic HUD">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -19,6 +19,9 @@
 
   <!-- 全屏幕动态背景 Canvas (支持 Nexus/Grid/Matrix/Warp 多模式) -->
   <canvas id="cyber-bg-canvas"></canvas>
+
+  <!-- 全屏幕任意位置点击粒子特效 Canvas -->
+  <canvas id="click-fx-canvas"></canvas>
 
   <!-- 赛博科技光标 -->
   <div id="cursor-dot"></div>
@@ -42,7 +45,7 @@
     <header class="hud-header">
       <a href="#" class="hud-brand">
         <img src="favicon.svg" alt="OKXX Logo" class="hud-logo-icon">
-        <div class="hud-brand-title">OKXX<span>.SYS</span></div>
+        <div class="hud-brand-title">OK<span>XX</span></div>
       </a>
 
       <div class="hud-status-badge">
@@ -411,6 +414,7 @@
 
   <!-- 引入模块脚本 -->
   <script src="js/audio.js"></script>
+  <script src="js/click-effects.js"></script>
   <script src="js/particle-text.js"></script>
   <script src="js/background-canvas.js"></script>
   <script src="js/hud-canvas.js"></script>

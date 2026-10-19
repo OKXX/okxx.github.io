@@ -187,10 +187,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // 2. 自定义鼠标光标
   new CyberCursor();
 
-  // 3. 全局动态背景 Canvas
+  // 3. 全局任意位置点击粒子特效 Canvas
+  window.clickFX = new ClickParticleFX('click-fx-canvas');
+
+  // 4. 全局动态背景 Canvas
   window.bgEngine = new CyberBackgroundEngine('cyber-bg-canvas');
 
-  // 4. Hero 粒子文字交互 Canvas
+  // 5. Hero 粒子文字交互 Canvas
   window.particleText = new ParticleTextCanvas('particle-text-canvas');
 
   // 5. HUD 雷达与示波器 Canvas
