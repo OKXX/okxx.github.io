@@ -1,8 +1,5 @@
 # 🌌 OKXX // QUANTUM CYBERSPACE
 
-> **okxx.github.io** — 未来赛博科技全息个人静态站点。
-> 采用纯原生 HTML5 Canvas 物理引擎、Web Audio API 算法声效及赛博朋克 HUD 视觉架构。零构建依赖，开箱即用。
-
 ---
 
 ## ✨ 核心视觉与动态特性
@@ -78,25 +75,6 @@ okxx/
      python -m http.server 8000
      ```
      然后访问 `http://localhost:8000`。
-
----
-
-## 🌐 部署到 GitHub Pages (`okxx.github.io`)
-
-1. 将当前目录初始化并推送到 GitHub 仓库：
-   ```bash
-   git init
-   git add .
-   git commit -m "feat: launch okxx cyber dynamic static portal"
-   git branch -M main
-   git remote add origin https://github.com/okxx/okxx.github.io.git
-   git push -u origin main
-   ```
-2. 在 GitHub 仓库设置中确认：
-   - 进入 **Settings** -> **Pages**。
-   - Source 选择 **Deploy from a branch**。
-   - Branch 选择 `main` / `root`。
-3. 等待数十秒，访问 `https://okxx.github.io` 即可查看部署成果！
 
 ---
 
