@@ -1,45 +1,106 @@
-# OKXX · Personal Universe
+# 🌌 OKXX // QUANTUM CYBERSPACE
 
-以 OKXX 个人账号为中心的静态主页，使用原生 HTML、CSS、JavaScript 与 Canvas 2D。无需安装依赖、运行构建或配置后端。
+> **okxx.github.io** — 专为 `@okxx` 定制的未来赛博科技全息个人静态站点。
+> 采用纯原生 HTML5 Canvas 物理引擎、Web Audio API 算法声效及赛博朋克 HUD 视觉架构。零构建依赖，开箱即用。
 
-## 页面与交互
+---
 
-- Canvas 三维粒子场：轨道、星云、球体，切换时平滑变形。
-- 鼠标视差与粒子扰动、点击扩散脉冲、轨道刻度、呼吸星点。
-- 滚动入场、技术栈滚动带、CSS 轨道动画、终端光标。
-- 暂停按钮、系统减少动态效果偏好、屏幕外及后台暂停渲染。
-- 桌面与移动布局、键盘焦点、语义化导航、无 JavaScript 内容降级。
+## ✨ 核心视觉与动态特性
 
-个人信息依据 [OKXX 的 GitHub 公开资料](https://github.com/OKXX)整理，没有使用实时 API 或虚构项目数据。
+### 1. ⚛️ 交互式量子文字粒子系统 (`js/particle-text.js`)
+- **像素点阵采样**：通过离屏 Canvas 实时采样 `OKXX` 字母点阵并转化为发光量子粒子。
+- **弹簧力学与斥力场**：鼠标掠过时粒子受冲击波轰散爆炸，离开后如流体般平滑磁吸回弹。
+- **动态形态变形 (Morphing)**：点击按钮或调用指令，粒子在 `OKXX`、`SYSTEMS`、`CYBERSPACE` 等词汇间无缝平滑重构。
+- **冲击波触发**：画布点击触发物理震荡冲击波，粒子沿切线受激扩散。
 
-## 本地预览
+### 2. 🌐 多模式全屏动态背景引擎 (`js/background-canvas.js`)
+支持通过右下角浮动控制坞或终端命令热切换 4 种沉浸式科技动效：
+1. **⚛ 粒子网络 (Nexus)**：深空量子浮动节点，随距离动态计算光子连线与鼠标引力透镜。
+2. **🌐 3D 赛博网格 (Grid)**：Synthwave / Tron 风格的 3D 地平线网格波浪与视差推进。
+3. **💻 黑客矩阵雨 (Matrix)**：经典的数字瀑布流，高光首字符与荧光余晖拖尾。
+4. **🚀 星际跃迁 (Warp)**：光速穿越超空间光束粒子，鼠标按下可触发极速加速。
 
-可以直接打开 `index.html`，也可以在项目根目录启动静态服务器：
+### 3. 📡 全息 HUD 雷达与示波器系统 (`js/hud-canvas.js`)
+- **雷达战术扫描仪**：360度旋转雷达扫描线、同心刻度环、信标点（Blips）感应高亮脉冲。
+- **量子示波器与频谱柱**：双通道动态叠加正弦波与 24 频段实时音频频谱柱跳动。
 
-```sh
-python -m http.server 4173 --bind 127.0.0.1
+### 4. 💻 仿真实交互式黑客终端 (`js/terminal.js`)
+- 支持指令：`help`、`whoami`、`skills`、`projects`、`canvas <mode>`、`matrix`、`audio [on|off]`、`github`、`clear` 等。
+- 支持上下按键切换历史指令，键盘敲击时伴随微电子打字音效。
+
+### 5. 🔊 纯原生 Web Audio 赛博音效引擎 (`js/audio.js`)
+- 零外部音频文件加载，使用纯数学波形（正弦波、方波、锯齿波）算法实时生成科技微按键声、跃迁音、扫描声。
+- 支持右上角一键静音/解除静音，用户选择持久化保存（`localStorage`）。
+
+### 6. 🎨 赛博朋克深空美学 (`css/style.css`)
+- 霓虹电浆青（`#00f0ff`）、赛博紫（`#7000ff`）与荧光粉（`#ff007f`）冷暖碰撞。
+- 扫描线滤镜（Scanline）、玻璃拟态（Glassmorphism）、切角多边形、动态光标跟随环。
+
+---
+
+## 🚀 目录结构
+
+```text
+okxx/
+├── index.html               # 核心主页入口 (GitHub Pages 部署根节点)
+├── favicon.svg              # 赛博朋克矢量图标
+├── css/
+│   └── style.css            # 科技感样式与动画设计
+├── js/
+│   ├── audio.js             # Web Audio 原生音效合成器
+│   ├── background-canvas.js # 多模式背景 Canvas 动画
+│   ├── particle-text.js     # Hero 交互文字粒子重构引擎
+│   ├── hud-canvas.js        # HUD 雷达与示波器 Canvas
+│   ├── terminal.js          # 交互式黑客终端控制台
+│   └── main.js              # 全局控制器、解密字、FPS与光标
+└── README.md                # 项目文档
 ```
 
-访问 <http://127.0.0.1:4173>。
+---
 
-## 发布到 GitHub Pages
+## 🛠 本地预览
 
-将本项目文件提交并推送到 `OKXX/okxx.github.io` 的 `master` 分支。在 GitHub 仓库的 **Settings → Pages → Build and deployment** 中，选择：
+由于是纯原生静态结构，无需任何 Node.js 或构建工具：
+1. **直接双击**：直接用任意现代浏览器（Chrome、Edge、Safari、Firefox）双击打开 `index.html`。
+2. **轻量服务器预览**（推荐）：
+   - VSCode 安装并运行 `Live Server` 插件；
+   - 或在终端运行：
+     ```bash
+     # Python 3
+     python -m http.server 8000
+     ```
+     然后访问 `http://localhost:8000`。
 
-- Source：**Deploy from a branch**
-- Branch：**master**，目录：**/ (root)**
+---
 
-保存并等待 GitHub Pages 部署完成，然后访问 <https://okxx.github.io/>。
+## 🌐 部署到 GitHub Pages (`okxx.github.io`)
 
-发布源设置详见 [GitHub Pages 官方文档](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)。
+1. 将当前目录初始化并推送到 GitHub 仓库：
+   ```bash
+   git init
+   git add .
+   git commit -m "feat: launch okxx cyber dynamic static portal"
+   git branch -M main
+   git remote add origin https://github.com/okxx/okxx.github.io.git
+   git push -u origin main
+   ```
+2. 在 GitHub 仓库设置中确认：
+   - 进入 **Settings** -> **Pages**。
+   - Source 选择 **Deploy from a branch**。
+   - Branch 选择 `main` / `root`。
+3. 等待数十秒，访问 `https://okxx.github.io` 即可查看部署成果！
 
-根目录的 `.nojekyll` 让 GitHub Pages 直接发布静态文件；资源采用相对路径，无需额外构建配置。GitHub 仓库链接用于查看源码，真正的网站地址是 `https://okxx.github.io/`。
+---
 
-## 自定义
+## 🔮 终端快捷命令预览
 
-- `index.html`：个人简介、技术栈、GitHub 链接及页面文案。
-- `styles.css`：配色、布局、字体与 CSS 动画。
-- `app.js`：粒子数量、形态、交互与动画生命周期。
-- `assets/favicon.svg`：网站图标。
-
-Barlow Condensed、IBM Plex Mono 与 Noto Sans SC 字体均保存在 `assets/fonts/`，并附带各自的 OFL 许可。中文字体只保留页面所需的字符以缩小体积；修改中文文案时，未包含的字符会自动使用本地备用字体。所有运行资源均来自当前仓库，页面无需访问外部字体服务、API 或动画库。
+| 命令 | 描述 |
+| :--- | :--- |
+| `help` | 查看所有支持的终端指令列表 |
+| `whoami` | 检视 @okxx 身份档案与极客使命 |
+| `skills` | 输出能力雷达与系统模块掌握指数 |
+| `projects` | 输出代表作品与开源仓库节点 |
+| `canvas <mode>` | 实时切换背景模式 (`nexus` / `grid` / `matrix` / `warp`) |
+| `matrix` | 立即激活黑客帝国绿光瀑布雨 |
+| `audio` | 切换 Web Audio 赛博音效开关 |
+| `clear` | 清空终端屏幕 |

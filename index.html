@@ -1,334 +1,420 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#080b0e" />
-    <meta
-      name="description"
-      content="OKXX 的个人数字空间。Java Developer · Linux · Homelab，在代码、系统与生活之间持续探索。"
-    />
-    <title>OKXX — Build. Learn. Explore.</title>
-    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
-    <link rel="stylesheet" href="./styles.css" />
-    <script src="./app.js" defer></script>
-  </head>
-  <body>
-    <a class="skip-link" href="#about">跳到主要内容</a>
-    <header class="site-header">
-      <a class="brand" href="#home" aria-label="OKXX 首页"
-        ><span class="brand-symbol" aria-hidden="true">[<i>×</i>]</span>
-        OKXX<span class="brand-dot">.</span></a
-      >
-      <nav aria-label="主导航">
-        <a href="#home" class="nav-link active"><span>01</span> 首页</a>
-        <a href="#about" class="nav-link"><span>02</span> 关于</a>
-        <a href="#explore" class="nav-link"><span>03</span> 探索</a>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>OKXX // QUANTUM CYBERSPACE - GitHub Personal Matrix</title>
+  <meta name="description" content="OKXX's futuristic cyber static portal on GitHub Pages featuring high-performance Canvas dynamic animations, particle physics, holographic HUD, and interactive terminal.">
+  <meta name="keywords" content="OKXX, GitHub Pages, Canvas, WebGL, Cyberpunk, Creative Developer, Sci-Fi, Holographic HUD">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- Google Fonts 科技与等宽字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- 全屏幕动态背景 Canvas (支持 Nexus/Grid/Matrix/Warp 多模式) -->
+  <canvas id="cyber-bg-canvas"></canvas>
+
+  <!-- 赛博科技光标 -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- 系统启动加载自检遮罩 -->
+  <div id="boot-overlay">
+    <div class="boot-box">
+      <div class="boot-logo">OKXX // SYSTEM</div>
+      <div class="boot-progress-track">
+        <div id="boot-progress-bar"></div>
+      </div>
+      <div id="boot-status-text">INITIALIZING QUANTUM KERNEL...</div>
+    </div>
+  </div>
+
+  <!-- 主页面容器 -->
+  <div class="portal-wrapper">
+
+    <!-- 顶部 HUD 导航栏 -->
+    <header class="hud-header">
+      <a href="#" class="hud-brand">
+        <img src="favicon.svg" alt="OKXX Logo" class="hud-logo-icon">
+        <div class="hud-brand-title">OKXX<span>.SYS</span></div>
+      </a>
+
+      <div class="hud-status-badge">
+        <span class="status-dot-blink"></span>
+        <span>STATUS: ONLINE</span>
+      </div>
+
+      <nav>
+        <ul class="hud-nav-links">
+          <li><a href="#hero">01. 核心架构</a></li>
+          <li><a href="#modules">02. 模块能力</a></li>
+          <li><a href="#hud-radar">03. 空间雷达</a></li>
+          <li><a href="#projects">04. 精选项目</a></li>
+          <li><a href="#terminal">05. 交互终端</a></li>
+        </ul>
       </nav>
-      <a
-        class="header-github"
-        href="https://github.com/OKXX"
-        target="_blank"
-        rel="noopener noreferrer"
-        >GITHUB <span aria-hidden="true">↗</span></a
-      >
+
+      <div class="hud-tools">
+        <div class="hud-metric-pill" id="hud-fps">60 FPS</div>
+        <div class="hud-metric-pill" id="hud-time">00:00:00 UTC</div>
+        <button class="hud-btn" id="audio-toggle-btn" title="切换声音合成器" aria-label="Toggle Audio">
+          <span id="audio-icon">🔇</span>
+        </button>
+        <button class="hud-btn" id="fullscreen-toggle-btn" title="全屏沉浸模式" aria-label="Toggle Fullscreen">
+          <span>⛶</span>
+        </button>
+      </div>
     </header>
 
-    <main>
-      <section class="hero" id="home" aria-labelledby="hero-title">
-        <canvas id="universe" aria-hidden="true"></canvas>
-        <div class="hero-grid" aria-hidden="true"></div>
-        <div class="hero-coordinate top-coordinate" aria-hidden="true">
-          SYS.01 / PERSONAL UNIVERSE
-        </div>
-        <div class="hero-content">
-          <div class="eyebrow entrance">
-            <span class="status-dot"></span> HELLO WORLD, I'M
-          </div>
-          <h1 id="hero-title" class="entrance">
-            OKXX<span class="title-period">.</span>
-          </h1>
-          <div class="hero-role entrance">
-            <span class="text-bracket">&lt;</span> Java Developer
-            <span class="role-divider">/</span> System Explorer
-            <span class="text-bracket">/&gt;</span>
-          </div>
-          <p class="hero-statement entrance">
-            构建逻辑<span>，</span>探索边界<span>。</span>
-          </p>
-          <p class="hero-description entrance">
-            在代码与系统之间，保持好奇。<br />这里是我的数字空间，也是下一次探索的起点。
-          </p>
-          <div class="hero-actions entrance">
-            <a
-              class="button button-primary"
-              href="https://github.com/OKXX"
-              target="_blank"
-              rel="noopener noreferrer"
-              ><svg viewBox="0 0 24 24" aria-hidden="true">
-                <path
-                  d="M9 19c-4.3 1.3-4.3-2.2-6-2.6m12 5v-3.5a3 3 0 0 0-.8-2.3c2.7-.3 5.5-1.3 5.5-6A4.7 4.7 0 0 0 18.4 6a4.3 4.3 0 0 0-.1-3.6S17.2 2 14.7 3.7a12.3 12.3 0 0 0-6.5 0C5.7 2 4.6 2.4 4.6 2.4A4.3 4.3 0 0 0 4.5 6a4.7 4.7 0 0 0-1.3 3.6c0 4.7 2.8 5.7 5.5 6A3 3 0 0 0 8 18v3.4"
-                />
-              </svg>
-              探索我的 GitHub <span aria-hidden="true">↗</span></a
-            >
-            <a class="button button-secondary" href="#about"
-              >认识一下 <span aria-hidden="true">↓</span></a
-            >
-          </div>
-          <div class="hero-tags entrance">
-            <span>JAVA</span><i></i><span>LINUX</span><i></i
-            ><span>HOMELAB</span>
-          </div>
-        </div>
-
-        <div class="orbit-label" aria-hidden="true">
-          <span class="tiny-cross">+</span
-          ><span id="formation-label">ORBITAL FIELD</span
-          ><span class="orbit-label-line"></span
-          ><span class="orbit-label-number">001</span>
-        </div>
-        <div class="interaction-hint">
-          <span class="hint-icon" aria-hidden="true">⌖</span> 移动鼠标扰动粒子 ·
-          点击释放脉冲
-        </div>
-        <div class="scene-controls" aria-label="粒子场景控制">
-          <span class="controls-label">FIELD MODE</span>
-          <div class="mode-group" role="group" aria-label="粒子形态">
-            <button
-              class="mode-button selected"
-              type="button"
-              data-mode="orbit"
-              aria-pressed="true"
-            >
-              <span>01</span> 轨道
-            </button>
-            <button
-              class="mode-button"
-              type="button"
-              data-mode="galaxy"
-              aria-pressed="false"
-            >
-              <span>02</span> 星云
-            </button>
-            <button
-              class="mode-button"
-              type="button"
-              data-mode="sphere"
-              aria-pressed="false"
-            >
-              <span>03</span> 球体
-            </button>
-          </div>
-          <button
-            class="motion-toggle"
-            id="motion-toggle"
-            type="button"
-            aria-label="暂停动画"
-            aria-pressed="false"
-          >
-            <span class="pause-icon" aria-hidden="true">Ⅱ</span>
-          </button>
-        </div>
-        <div class="hero-bottom">
-          <a class="scroll-cue" href="#about"
-            ><span class="scroll-mouse" aria-hidden="true"></span> SCROLL TO
-            EXPLORE <span aria-hidden="true">↓</span></a
-          >
-          <span class="hero-bottom-center">BUILD. LEARN. EXPLORE.</span>
-          <span class="render-status"
-            ><i></i> CANVAS LIVE <span id="fps-value">—</span> FPS</span
-          >
-        </div>
-      </section>
-
-      <div class="tech-ticker" aria-hidden="true">
-        <div class="ticker-track">
-          <span>JAVA</span><i>✳</i><span>SPRING BOOT</span><i>✳</i
-          ><span>LINUX</span><i>✳</i><span>DOCKER</span><i>✳</i
-          ><span>HOMELAB</span><i>✳</i><span>STAY CURIOUS</span><i>✳</i
-          ><span>JAVA</span><i>✳</i><span>SPRING BOOT</span><i>✳</i
-          ><span>LINUX</span><i>✳</i><span>DOCKER</span><i>✳</i
-          ><span>HOMELAB</span><i>✳</i><span>STAY CURIOUS</span><i>✳</i>
+    <!-- HERO 核心交互展示区 -->
+    <section class="hero-section" id="hero">
+      <div class="hero-particle-container">
+        <!-- 粒子文字 Canvas -->
+        <canvas id="particle-text-canvas"></canvas>
+        <div class="particle-hint-pill">
+          ⚡ 移动/触摸鼠标扰动力场 · 点击触发粒子冲击波
         </div>
       </div>
 
-      <section
-        class="about section-shell"
-        id="about"
-        aria-labelledby="about-title"
-      >
-        <div class="section-heading reveal">
-          <span class="section-index">01 / ABOUT ME</span
-          ><span class="section-note">MORE THAN A USERNAME</span>
+      <div class="hero-subtitle-box">
+        <div class="hero-tagline" id="hero-scramble-text">SYSTEM ARCHITECT & CREATIVE DEVELOPER</div>
+      </div>
+
+      <p class="hero-description">
+        欢迎接入 <b>OKXX</b> 的个人量子赛博空间站。基于 HTML5 Canvas 物理动力学与 Web Audio 算法驱动，构筑高维粒子流、3D全息雷达与交互式黑客指令中枢。
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn-cyber" id="morph-text-btn">
+          <span>⟳ 重构形态 (MORPH)</span>
+        </button>
+        <a href="#modules" class="btn-cyber btn-cyber-purple">
+          <span>❖ 核心能力</span>
+        </a>
+        <a href="#terminal" class="btn-cyber btn-cyber-outline">
+          <span>&gt;_ 启动终端</span>
+        </a>
+        <a href="https://github.com/okxx" target="_blank" rel="noopener noreferrer" class="btn-cyber btn-cyber-outline">
+          <span>↗ GITHUB 主页</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 系统遥测数据条 -->
+    <div class="telemetry-band">
+      <div class="telemetry-grid">
+        <div class="telemetry-item">
+          <div class="telemetry-icon">⚛</div>
+          <div>
+            <div class="telemetry-num">1,400+</div>
+            <div class="telemetry-label">Quantum Particles</div>
+          </div>
         </div>
-        <div class="about-layout">
-          <div class="about-intro reveal">
-            <h2 id="about-title">
-              代码之外，<br />好奇心<span class="accent">不止。</span>
-            </h2>
-            <p>
-              你好，我是 <strong>OKXX</strong>，也叫 Vez。<br />一名后端开发者，热衷于软件、系统<br
-                class="desktop-break"
-              />和自托管基础设施。
+        <div class="telemetry-item">
+          <div class="telemetry-icon">⚡</div>
+          <div>
+            <div class="telemetry-num">&lt; 8ms</div>
+            <div class="telemetry-label">Render Latency</div>
+          </div>
+        </div>
+        <div class="telemetry-item">
+          <div class="telemetry-icon">◈</div>
+          <div>
+            <div class="telemetry-num">4 MODES</div>
+            <div class="telemetry-label">Dynamic Canvas Engines</div>
+          </div>
+        </div>
+        <div class="telemetry-item">
+          <div class="telemetry-icon">◉</div>
+          <div>
+            <div class="telemetry-num">100%</div>
+            <div class="telemetry-label">Native Web Audio API</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 核心能力模块区 -->
+    <section class="section-container" id="modules">
+      <div class="section-header">
+        <div class="section-label">SYSTEM_CAPABILITIES</div>
+        <h2 class="section-title">核心技术矩阵与动力模块</h2>
+      </div>
+
+      <div class="modules-grid">
+        <!-- Module 1 -->
+        <div class="cyber-card interactive-card">
+          <div class="card-corner-tr"></div>
+          <div class="module-icon-box">✦</div>
+          <h3 class="module-title">Canvas 物理动力学</h3>
+          <p class="module-desc">
+            高密度粒子模拟、引力与排斥场方程、弹簧震荡物理学、文字像素点阵重构与形态变形过渡。
+          </p>
+          <div class="module-stats-bar">
+            <div class="module-stats-fill" style="width: 95%;"></div>
+          </div>
+          <div class="module-stats-label">
+            <span>SYNTHESIS INDEX</span>
+            <span>95%</span>
+          </div>
+        </div>
+
+        <!-- Module 2 -->
+        <div class="cyber-card interactive-card">
+          <div class="card-corner-tr"></div>
+          <div class="module-icon-box">❖</div>
+          <h3 class="module-title">赛博全息 HUD 交互</h3>
+          <p class="module-desc">
+            未来主义战术显示屏、动态雷达扫描臂、多波长示波器信号、数字流光雨及玻璃拟态赛博装甲视觉。
+          </p>
+          <div class="module-stats-bar">
+            <div class="module-stats-fill" style="width: 92%;"></div>
+          </div>
+          <div class="module-stats-label">
+            <span>INTERFACE COHERENCE</span>
+            <span>92%</span>
+          </div>
+        </div>
+
+        <!-- Module 3 -->
+        <div class="cyber-card interactive-card">
+          <div class="card-corner-tr"></div>
+          <div class="module-icon-box">⚡</div>
+          <h3 class="module-title">原生 Web Audio 引擎</h3>
+          <p class="module-desc">
+            无需外部音频资源，纯算法实时合成正弦、锯齿与方波高科技音效，按键微触发与跃迁微爆鸣。
+          </p>
+          <div class="module-stats-bar">
+            <div class="module-stats-fill" style="width: 88%;"></div>
+          </div>
+          <div class="module-stats-label">
+            <span>AUDIO FREQUENCY RES</span>
+            <span>88%</span>
+          </div>
+        </div>
+
+        <!-- Module 4 -->
+        <div class="cyber-card interactive-card">
+          <div class="card-corner-tr"></div>
+          <div class="module-icon-box">⚙</div>
+          <h3 class="module-title">全栈极速轻量架构</h3>
+          <p class="module-desc">
+            零编译负担、纯原生现代标准、针对 GitHub Pages 静态托管深度优化，自适应高清视网膜显示屏。
+          </p>
+          <div class="module-stats-bar">
+            <div class="module-stats-fill" style="width: 98%;"></div>
+          </div>
+          <div class="module-stats-label">
+            <span>PERFORMANCE RATIO</span>
+            <span>98%</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HUD 全息战术仪表盘与雷达探测区 -->
+    <section class="section-container" id="hud-radar">
+      <div class="section-header">
+        <div class="section-label">HOLOGRAPHIC_RADAR_TELEMETRY</div>
+        <h2 class="section-title">空间雷达与信号频谱</h2>
+      </div>
+
+      <div class="hud-dashboard-grid">
+        <!-- 仪表 1：雷达扫描 -->
+        <div class="cyber-card hud-panel">
+          <div class="hud-panel-header">
+            <span>RADAR_SCANNER // SECTOR_07</span>
+            <span>RANGE: 120 KM</span>
+          </div>
+          <div class="radar-canvas-box">
+            <canvas id="radar-canvas"></canvas>
+          </div>
+          <div class="hud-telemetry-readout">
+            <div class="readout-item">TARGET: <span>OKXX_CORE</span></div>
+            <div class="readout-item">BEACON: <span>TRACKING (4)</span></div>
+          </div>
+        </div>
+
+        <!-- 仪表 2：动态示波器波形与频谱 -->
+        <div class="cyber-card hud-panel">
+          <div class="hud-panel-header">
+            <span>WAVEFORM_SPECTRUM // FREQ_ANALYSER</span>
+            <span>BAND: 433 MHz</span>
+          </div>
+          <div class="wave-canvas-box">
+            <canvas id="waveform-canvas"></canvas>
+          </div>
+          <div class="hud-telemetry-readout">
+            <div class="readout-item">FLUX DENSITY: <span>99.4%</span></div>
+            <div class="readout-item">CARRIER: <span>QUANTUM LINK</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 精选项目节点展示区 -->
+    <section class="section-container" id="projects">
+      <div class="section-header">
+        <div class="section-label">REPOSITORY_NODES</div>
+        <h2 class="section-title">精选开源项目与实验节点</h2>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="cyber-card project-card interactive-card">
+          <div class="card-corner-tr"></div>
+          <div>
+            <span class="project-tag">PORTAL CORE</span>
+            <h3 class="project-title">OKXX Quantum Canvas</h3>
+            <p class="project-desc">
+              本个人网站的核心源码。集成多模式 Canvas 粒子物理引擎、全息 HUD 仪表、赛博文字重构与纯算法音效系统。
             </p>
-            <a
-              class="text-link"
-              href="https://github.com/OKXX"
-              target="_blank"
-              rel="noopener noreferrer"
-              >更多关于我 <span aria-hidden="true">↗</span></a
-            >
-            <div class="personal-signature">{ Build · Learn · Explore }</div>
           </div>
-          <div class="interest-list">
-            <article class="interest-row reveal">
-              <span class="interest-number">01</span>
-              <div>
-                <h3>构建可靠的后端 <span>BACKEND</span></h3>
-                <p>把想法写成逻辑，让复杂的系统有序运转。</p>
-                <div class="stack-tags">
-                  <span>Java</span><span>Spring Boot</span><span>MySQL</span
-                  ><span>Redis</span>
-                </div>
-              </div>
-              <span class="interest-glyph" aria-hidden="true">{ }</span>
-            </article>
-            <article class="interest-row reveal">
-              <span class="interest-number">02</span>
-              <div>
-                <h3>拥有自己的数字世界 <span>HOMELAB</span></h3>
-                <p>从一台服务器开始，探索基础设施的更多可能。</p>
-                <div class="stack-tags">
-                  <span>Linux</span><span>Docker</span><span>Proxmox VE</span
-                  ><span>NAS</span>
-                </div>
-              </div>
-              <span class="interest-glyph" aria-hidden="true">⌘</span>
-            </article>
-            <article class="interest-row reveal">
-              <span class="interest-number">03</span>
-              <div>
-                <h3>感知生活的另一面 <span>BEYOND CODE</span></h3>
-                <p>听见细节，记录瞬间，也理解人与世界。</p>
-                <div class="stack-tags">
-                  <span>Hi-Fi</span><span>Photography</span
-                  ><span>Psychology</span>
-                </div>
-              </div>
-              <span class="interest-glyph" aria-hidden="true">◎</span>
-            </article>
+          <div class="project-footer">
+            <div class="project-techs">
+              <span class="tech-badge">HTML5 Canvas</span>
+              <span class="tech-badge">Physics</span>
+              <span class="tech-badge">Web Audio</span>
+            </div>
+            <a href="https://github.com/okxx" target="_blank" class="project-link-btn">
+              REPO <span>↗</span>
+            </a>
           </div>
         </div>
-      </section>
 
-      <section
-        class="explore section-shell"
-        id="explore"
-        aria-labelledby="explore-title"
-      >
-        <div class="section-heading reveal">
-          <span class="section-index">02 / EXPLORATIONS</span
-          ><span class="section-note">ALWAYS A WORK IN PROGRESS</span>
+        <!-- Project 2 -->
+        <div class="cyber-card project-card interactive-card">
+          <div class="card-corner-tr"></div>
+          <div>
+            <span class="project-tag">UI LAB</span>
+            <h3 class="project-title">Cyberpunk HUD Components</h3>
+            <p class="project-desc">
+              一套面向未来的暗黑科幻风 UI 组件集合。包含切角玻璃拟态卡片、发光扫描线、数字时钟和雷达交互控件。
+            </p>
+          </div>
+          <div class="project-footer">
+            <div class="project-techs">
+              <span class="tech-badge">Modern CSS</span>
+              <span class="tech-badge">HUD Design</span>
+              <span class="tech-badge">Cyberpunk</span>
+            </div>
+            <a href="https://github.com/okxx" target="_blank" class="project-link-btn">
+              REPO <span>↗</span>
+            </a>
+          </div>
         </div>
-        <div class="explore-title-row reveal">
-          <h2 id="explore-title">保持探索<span class="accent">_</span></h2>
-          <p>开放的代码，私人的实验，持续生长的想法。</p>
+
+        <!-- Project 3 -->
+        <div class="cyber-card project-card interactive-card">
+          <div class="card-corner-tr"></div>
+          <div>
+            <span class="project-tag">AUDIO-VISUAL</span>
+            <h3 class="project-title">Waveform Flux Visualizer</h3>
+            <p class="project-desc">
+              基于 Web Audio API 与 Canvas 的实时音频示波流体。通过频域傅里叶变换将声音波长映射为动态能量粒子。
+            </p>
+          </div>
+          <div class="project-footer">
+            <div class="project-techs">
+              <span class="tech-badge">Web Audio API</span>
+              <span class="tech-badge">FFT</span>
+              <span class="tech-badge">Canvas 2D</span>
+            </div>
+            <a href="https://github.com/okxx" target="_blank" class="project-link-btn">
+              REPO <span>↗</span>
+            </a>
+          </div>
         </div>
-        <div class="explore-grid">
-          <a
-            class="explore-card website-card reveal"
-            href="https://github.com/OKXX/okxx.github.io"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div class="card-top">
-              <span>01 / THE OPEN WEB</span
-              ><span class="card-arrow" aria-hidden="true">↗</span>
-            </div>
-            <div class="mini-orbit" aria-hidden="true">
-              <div></div>
-              <div></div>
-              <div></div>
-              <span>O</span>
-            </div>
-            <div class="card-copy">
-              <span class="card-category">PERSONAL WEBSITE</span>
-              <h3>你正在访问的，<br />也是我的实验。</h3>
-              <p>用代码创造一小片属于自己的互联网。</p>
-              <div class="card-footer">
-                <span>okxx.github.io</span><span>查看源码 ↗</span>
-              </div>
-            </div>
+      </div>
+    </section>
+
+    <!-- 交互式黑客终端 -->
+    <section class="section-container" id="terminal">
+      <div class="section-header">
+        <div class="section-label">COMMAND_INTERFACE</div>
+        <h2 class="section-title">量子命令行交互终端</h2>
+      </div>
+
+      <div class="terminal-window" id="cyber-terminal">
+        <div class="terminal-header">
+          <div class="terminal-controls">
+            <span class="term-dot red"></span>
+            <span class="term-dot yellow"></span>
+            <span class="term-dot green"></span>
+          </div>
+          <div class="terminal-title">bash - okxx@quantum-nexus:~</div>
+          <div class="terminal-quick-bar">
+            <button class="term-quick-btn" data-cmd="help">help</button>
+            <button class="term-quick-btn" data-cmd="whoami">whoami</button>
+            <button class="term-quick-btn" data-cmd="skills">skills</button>
+            <button class="term-quick-btn" data-cmd="matrix">matrix</button>
+            <button class="term-quick-btn" data-cmd="canvas grid">canvas grid</button>
+            <button class="term-quick-btn" data-cmd="clear">clear</button>
+          </div>
+        </div>
+
+        <div class="terminal-body" id="terminal-output">
+          <!-- 动态日志行将打印在此处 -->
+        </div>
+
+        <div class="terminal-input-row">
+          <span class="terminal-prompt-label">okxx@nexus:~$</span>
+          <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" placeholder="输入命令 (例如 help, whoami, matrix, canvas)...">
+        </div>
+      </div>
+    </section>
+
+    <!-- 页脚与社交链接 -->
+    <footer class="portal-footer">
+      <div class="footer-content">
+        <div class="footer-brand">OKXX // CYBERSPACE</div>
+        <div class="footer-social-links">
+          <a href="https://github.com/okxx" target="_blank" rel="noopener noreferrer" class="social-link">
+            <span>🐙 GitHub: @okxx</span>
           </a>
-          <article class="explore-card lab-card reveal">
-            <div class="card-top">
-              <span>02 / SELF-HOSTED WORLD</span
-              ><span class="lab-indicator"><i></i> HOMELAB</span>
-            </div>
-            <div class="terminal" aria-label="个人实验室技术栈">
-              <div class="terminal-top">
-                <span></span><span></span><span></span><i>okxx@homelab: ~</i>
-              </div>
-              <div class="terminal-body">
-                <p><span>~ $</span> cat interests.conf</p>
-                <p class="terminal-comment"># 自己搭建，自己掌控</p>
-                <p>virtualization <b>Proxmox VE</b></p>
-                <p>containers <b>Docker</b></p>
-                <p>automation <b>Home Assistant</b></p>
-                <p>storage <b>NAS / Networking</b></p>
-                <p><span>~ $</span> <span class="terminal-caret">▍</span></p>
-              </div>
-            </div>
-            <div class="card-copy">
-              <span class="card-category">MY DIGITAL WORKBENCH</span>
-              <h3>从本地，<br />连接更多可能。</h3>
-              <p>虚拟化、容器、自动化。折腾本身就是乐趣。</p>
-              <div class="card-footer">
-                <span>BUILD / BREAK / REPEAT</span
-                ><span aria-hidden="true">⌘</span>
-              </div>
-            </div>
-          </article>
+          <a href="https://okxx.github.io" class="social-link">
+            <span>🌐 okxx.github.io</span>
+          </a>
+          <a href="mailto:okxx@example.com" class="social-link">
+            <span>✉ Signal Message</span>
+          </a>
         </div>
-      </section>
-
-      <section class="contact section-shell" aria-labelledby="contact-title">
-        <div class="contact-grid" aria-hidden="true"></div>
-        <div class="reveal">
-          <span class="section-index"
-            ><span class="status-dot"></span> NEXT CONNECTION</span
-          >
-          <h2 id="contact-title">
-            让好奇心，<br />产生<span class="accent">连接。</span>
-          </h2>
-          <p>关于代码、系统，或是一个有趣的想法。</p>
-          <a
-            class="button button-primary"
-            href="https://github.com/OKXX"
-            target="_blank"
-            rel="noopener noreferrer"
-            >在 GitHub 找到我 <span aria-hidden="true">↗</span></a
-          >
+        <div class="footer-copyright">
+          &copy; 2026 OKXX. ALL RIGHTS RESERVED. DEPLOYED ON GITHUB PAGES.
         </div>
-        <span class="contact-decoration" aria-hidden="true">[ * ]</span>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <a class="brand" href="#home">OKXX<span class="brand-dot">.</span></a
-      ><span
-        >© <span id="year">2026</span> OKXX · CRAFTED WITH CODE &
-        CURIOSITY</span
-      ><a class="back-top" href="#home"
-        >BACK TO TOP <span aria-hidden="true">↑</span></a
-      >
+      </div>
     </footer>
-    <noscript
-      ><div class="noscript-note">
-        当前浏览器未启用 JavaScript，个人介绍与 GitHub
-        链接仍可正常浏览；启用后可体验粒子动画。
-      </div></noscript
-    >
-  </body>
+
+  </div>
+
+  <!-- 模式切换浮动控制坞 -->
+  <aside class="mode-dock" aria-label="Canvas Mode Switcher">
+    <button class="mode-btn active" data-mode="nexus" title="量子粒子网络">
+      <span>⚛ 粒子网络</span>
+    </button>
+    <button class="mode-btn" data-mode="grid" title="3D 赛博网格">
+      <span>🌐 3D网格</span>
+    </button>
+    <button class="mode-btn" data-mode="matrix" title="黑客数字流光雨">
+      <span>💻 矩阵雨</span>
+    </button>
+    <button class="mode-btn" data-mode="warp" title="超空间星际跃迁">
+      <span>🚀 跃迁</span>
+    </button>
+  </aside>
+
+  <!-- 引入模块脚本 -->
+  <script src="js/audio.js"></script>
+  <script src="js/particle-text.js"></script>
+  <script src="js/background-canvas.js"></script>
+  <script src="js/hud-canvas.js"></script>
+  <script src="js/terminal.js"></script>
+  <script src="js/main.js"></script>
+</body>
 </html>
