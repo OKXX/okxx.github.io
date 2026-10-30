@@ -1,7 +1,5 @@
 # 🌌 OKXX // QUANTUM CYBERSPACE
 
----
-
 ## ✨ 核心视觉与动态特性
 
 ### 1. ⚛️ 交互式量子文字粒子系统 (`js/particle-text.js`)
